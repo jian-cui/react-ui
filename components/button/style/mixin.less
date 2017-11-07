@@ -1,0 +1,133 @@
+@import './animation.less';
+
+@btn-prefix-cls: react-btn;
+// @btn-clicked: @{btn-prefix-cls}-clicked;
+
+@default-bg: #fff;
+@default-border: #d9d9d9;
+@default-color: rgba(0,0,0,.65);
+@default-bg-hover: #fff;
+@default-border-hover: #108ee9;
+@default-color-hover: #108ee9;
+
+@primary-bg: #108ee9;
+@primary-border: #108ee9;
+@primary-color: #fff;
+@primary-bg-hover: #49a9ee;
+@primary-border-hover: #49a9ee;
+@primary-color-hover: #fff;
+
+@dashed-color: rgba(0,0,0,.65);
+@dashed-bg: #fff;
+@dashed-border: #d9d9d9;
+@dashed-color-hover: #108ee9;
+@dashed-bg-hover: #fff;
+@dashed-border-hover: #108ee9;
+
+@danger-color: #f04134;
+@danger-bg: #f7f7f7;
+@danger-border: #d9d9d9;
+@danger-color-hover: #fff;
+@danger-bg-hover: #f04134;
+@danger-border-hover: #f04134;
+
+
+.btn() {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  outline: 0;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 1.15;
+  padding: 0 15px;
+  height: 28px;
+  user-select: none;
+  transition: all .3s cubic-bezier(.645,.045,.355,1);
+  position: relative;
+  color: @default-color;
+  background-color: @default-bg;
+  border-color: @default-border;
+  &:hover {
+    color: @default-color-hover;
+    background-color: @default-bg-hover;
+    border-color: @default-border-hover;
+  }
+  &.@{btn-prefix-cls}-clicked:after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    bottom: -1px;
+    right: -1px;
+    border-radius: inherit;
+    border: 0 solid #108ee9;
+    opacity: .4;
+    -webkit-animation: buttonEffect .4s;
+    animation: buttonEffect .4s;
+    display: block;
+  }
+}
+
+.btn-primary() {
+  color: @primary-color;
+  background-color: @primary-bg;
+  border-color: @primary-border;
+  
+  &:hover {
+    color: @primary-color-hover;
+    background-color: @primary-bg-hover;
+    border-color: @primary-border-hover;
+  }
+}
+
+.btn-dashed() {
+  color: @dashed-color;
+  background-color: @dashed-bg;
+  border-color: @dashed-border;
+  border-style: dashed;
+  &:hover {
+    color: @dashed-color-hover;
+    background-color: @dashed-bg-hover;
+    border-color: @dashed-border-hover;
+  }
+}
+
+.btn-danger() {
+  color: @danger-color;
+  background-color: @danger-bg;
+  border-color: @danger-border;
+  &:hover {
+    color: @danger-color-hover;
+    background-color: @danger-bg-hover;
+    border-color: @danger-border-hover;
+  }
+  &.@{btn-prefix-cls}-clicked:after {
+    border-color: @danger-border-hover;
+  }
+}
+
+
+.@{btn-prefix-cls} {
+  .btn;
+  // .btn-default;
+
+  >i,
+  >span {
+    pointer-events: none;
+  }
+
+  &-primary {
+    .btn-primary;
+  }
+  &-dashed {
+    .btn-dashed;
+  }
+  &-danger {
+    .btn-danger;
+  }
+}
