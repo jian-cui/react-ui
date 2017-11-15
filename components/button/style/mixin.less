@@ -1,6 +1,7 @@
 @import './animation.less';
 
 @btn-prefix-cls: react-btn;
+@btn-group-prefix-cls: react-btn-group;
 // @btn-clicked: @{btn-prefix-cls}-clicked;
 
 @default-bg: #fff;
@@ -31,6 +32,12 @@
 @danger-bg-hover: #f04134;
 @danger-border-hover: #f04134;
 
+@disabled-color: rgba(0, 0, 0, .25);
+@disabled-bg: #f7f7f7;
+@disabled-border: #d9d9d9;
+@disabled-color-hover: rgba(0, 0, 0, .25);
+@disabled-bg-hover: #f7f7f7;
+@disabeld-border-hover: #d9d9d9;
 
 .btn() {
   display: inline-block;
@@ -52,11 +59,50 @@
   color: @default-color;
   background-color: @default-bg;
   border-color: @default-border;
+  &:before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    bottom: -1px;
+    right: -1px;
+    background: #FFF;
+    opacity: .35;
+    z-index: 1;
+    transition: opacity .2s;
+    pointer-events: none;
+    display: none;
+  }
   &:hover {
     color: @default-color-hover;
     background-color: @default-bg-hover;
     border-color: @default-border-hover;
   }
+  &[disabled] {
+    cursor: not-allowed;
+    color: @disabled-color;
+    background-color: @disabled-bg;
+    border-color: @disabled-border;
+    &:hover {
+        color: @disabled-color-hover;
+        background-color: @disabled-bg-hover;
+        border-color: @disabled-border;
+    }
+  }
+  &.@{btn-prefix-cls}-loading {
+    pointer-events: none;
+    &:before {
+      display: block;
+    }
+    & > i:before {
+      display: inline-block;
+      animation: loadingCircle 1s infinite linear;
+    }
+  }
+  &.@{btn-prefix-cls} > .reacticon + span {
+    margin-left: .5em;
+  }
+
   &.@{btn-prefix-cls}-clicked:after {
     content: "";
     position: absolute;
@@ -71,13 +117,76 @@
     animation: buttonEffect .4s;
     display: block;
   }
+  &.@{btn-prefix-cls}-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 14px;
+  }
+  &.@{btn-prefix-cls}-lg {
+    padding: 0 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    height: 32px;
+    &.@{btn-prefix-cls}-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      padding: 0;
+      font-size: 16px;
+    }
+  }
+  &.@{btn-prefix-cls}-sm {
+    padding: 0 7px;
+    font-size: 12px;
+    border-radius: 4px;
+    height: 22px;
+    &.@{btn-prefix-cls}-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      padding: 0;
+      font-size: 12px;
+    }
+  }
+    
 }
-
+// .btn-color(@color, @background-color, @border-color, @color-hover, @background-color-hover, @border-color-hover) {
+//   color: @color;
+//   background-color: @background-color;
+//   border-color: @border-color;
+//   &.@{btn-prefix-cls}-background-ghost {
+//     color: @border-color;
+//     background-color: transparent;
+//     border-color: @border-color;
+//     &:hover {
+//       color: @border-color-hover;
+//       background-color: transparent;
+//       border-color: @border-color-hover;
+//     }
+//   }
+//   &:hover {
+//     color: @color-hover;
+//     background-color: @background-color-hover;
+//     border-color: @border-color-hover;
+//   }
+// }
 .btn-primary() {
+  // .btn-color(@primary-color, @primary-bg, @primary-border, @primary-color-hover, @primary-bg-hover, @primary-border-hover);
   color: @primary-color;
   background-color: @primary-bg;
   border-color: @primary-border;
-  
+  &.@{btn-prefix-cls}-background-ghost {
+    color: @primary-border;
+    background-color: transparent;
+    border-color: @primary-border;
+    &:hover {
+      color: @primary-border-hover;
+      background-color: transparent;
+      color: @primary-border-hover;
+    }
+  }
   &:hover {
     color: @primary-color-hover;
     background-color: @primary-bg-hover;
@@ -86,10 +195,21 @@
 }
 
 .btn-dashed() {
+  // .btn-color(@dashed-color, @dashed-bg, @dashed-border, @dashed-color-hover, @dashed-bg-hover, @dashed-border-hover);
+  border-style: dashed;
   color: @dashed-color;
   background-color: @dashed-bg;
   border-color: @dashed-border;
-  border-style: dashed;
+  &.@{btn-prefix-cls}-background-ghost {
+    // color: @dashed-border;
+    background-color: transparent;
+    // border-color: @dashed-border;
+    &:hover {
+      color: @dashed-border-hover;
+      background-color: transparent;
+      color: @dashed-border-hover;
+    }
+  }
   &:hover {
     color: @dashed-color-hover;
     background-color: @dashed-bg-hover;
@@ -98,9 +218,20 @@
 }
 
 .btn-danger() {
+  // .btn-color(@danger-color, @danger-bg, @danger-border, @danger-color-hover, @danger-bg-hover, @danger-border-hover);
   color: @danger-color;
   background-color: @danger-bg;
   border-color: @danger-border;
+  &.@{btn-prefix-cls}-background-ghost {
+    color: @danger-color;
+    background-color: transparent;
+    border-color: @danger-color;
+    &:hover {
+      color: @danger-border-hover;
+      background-color: transparent;
+      color: @danger-border-hover;
+    }
+  }
   &:hover {
     color: @danger-color-hover;
     background-color: @danger-bg-hover;
@@ -129,5 +260,14 @@
   }
   &-danger {
     .btn-danger;
+  }
+}
+// ghost
+.@{btn-prefix-cls}-background-ghost {
+  color: #ffff;
+  background: transparent!important;
+  border-color: #fff;
+  &:hover {
+    background: transparent;
   }
 }

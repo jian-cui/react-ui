@@ -1,13 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import Icon from '../icon/index.jsx';
 import './style/style.less';
 
 export default class Button extends React.Component {
   constructor (props) {
-    // props.type primary, dashed, danger
-    // props.shape default, circle
-    // props.icon 
     super(props);
     this.state = {
       clicked: false,
@@ -33,25 +31,44 @@ export default class Button extends React.Component {
   render () {
     const {
       type, shape, size, className, children, icon, prefixCls, loading, ghost, disabled
-    } = this.props;
-    
+     } = this.props;
+
+    let sizeCls = '';
+    switch (size) {
+      case 'large':
+        sizeCls = 'lg';
+        break;
+      case 'small':
+        sizeCls = 'sm';
+      default:
+        break;
+    }
+
+
     const { clicked } = this.state;
+
     const classes = classNames(prefixCls, className, {
       [`${prefixCls}-${type}`]: type,
       [`${prefixCls}-${shape}`]: shape,
+      [`${prefixCls}-${sizeCls}`]: sizeCls,
       [`${prefixCls}-loading`]: loading,
       [`${prefixCls}-clicked`]: clicked,
       [`${prefixCls}-background-ghost`]: ghost
     })
-    console.log(prefixCls, className, )
-    console.log(classes)
+
+    const iconType = loading ? 'loading' : icon;
+    const iconNode = iconType ? <Icon type={iconType} /> : null;
+    const kids = React.Children.map(children, child => <span>{child}</span>);
+    const dis = disabled ? 'disabled' : '';
     return (
       <button
         type='button'
-        className={classes}
-        onClick={this.handleClick.bind(this)}
+        className={ classes }
+        onClick={ this.handleClick.bind(this) }
+        disabled= { disabled }
       >
-        <span>{ children }</span>
+        { iconNode }
+        { kids }
       </button>
     )
   }
@@ -62,7 +79,8 @@ Button.defaultProps = {
   prefixCls: 'react-btn',
   loading: false,
   ghost: false,
-  size: 'medium'
+  size: 'medium',
+  disabled: false
 }
 
 Button.propTypes = {
@@ -74,5 +92,6 @@ Button.propTypes = {
   ghost: PropTypes.bool,
   disabled: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-  className: PropTypes.string
+  className: PropTypes.string,
+  onClick: PropTypes.func
 }
