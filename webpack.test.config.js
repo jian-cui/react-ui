@@ -42,7 +42,7 @@ const webpackConfig = {
   // },
   // watch: true,
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    // new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './test.html',

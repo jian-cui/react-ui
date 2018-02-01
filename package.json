@@ -4,7 +4,8 @@
   "description": "This is a practice of React. All the components can be found in Ant-Design or some other famous React UI language. I'm just trying to reimplement them to learn more about React.",
   "main": "index.js",
   "scripts": {
-    "test": "node webpack.config.js"
+    "test": "node webpack.test.config.js",
+    "build": "set NODE_ENV=production && webpack --config webpack.production.config.js"
   },
   "repository": {
     "type": "git",
