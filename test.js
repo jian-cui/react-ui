@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import Button from './components/button/index.jsx';
+// import Button from './components/button/index.jsx';
+// import Affix from './components/affix/index.jsx';
+import { Button, Affix } from './components/';
 import './test.less';
 import './font/iconfont.less';
 
@@ -8,6 +10,9 @@ const ButtonGroup = Button.Group;
 
 ReactDom.render(
   <div className="button-wrapper">
+    <Affix>
+      <Button type="primary">This is a button</Button>
+    </Affix>
     <div className="default">
       <Button type="primary">Primary</Button>
       <Button>Default</Button>
@@ -57,6 +62,10 @@ ReactDom.render(
       <Button type="primary">Primary</Button>
       <Button type="primary">Primary</Button>
     </ButtonGroup>
+
+    <Button href="#" style= { {backgroundColor: 'blue',  color: '#FFF', borderColor: 'blue'} } type="primary">a标签按钮</Button>
+    <Button href="#" size="large"  type="primary">a标签按钮</Button>
+    <Button href="#" size="small">a标签按钮</Button>
   </div>,
   document.getElementById('app')
 )

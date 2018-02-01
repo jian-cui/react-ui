@@ -5,7 +5,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 
-const port = 3000;
+const port = 3001;
 
 const webpackConfig = {
   entry: {
@@ -31,6 +31,9 @@ const webpackConfig = {
       test   : /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
       loader : 'file-loader'      
     }]
+  },
+  resolve: {
+    extensions: [".js", ".jsx"]
   },
   devtool: 'source-map',
   // devServer: {
@@ -65,5 +68,5 @@ const compiler = webpack(webpackConfig);
 const server = new WebpackDevServer(compiler, options);
 
 server.listen(port, 'localhost', function () {
-  console.log('listening localhost:3000');
+  console.log('listening localhost:' + port);
 });

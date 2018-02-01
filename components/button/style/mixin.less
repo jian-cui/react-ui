@@ -59,6 +59,7 @@
   color: @default-color;
   background-color: @default-bg;
   border-color: @default-border;
+  border-radius: 4px;
   &:before {
     content: '';
     position: absolute;
@@ -242,7 +243,16 @@
   }
 }
 
-
+a.@{btn-prefix-cls} {
+  text-decoration: none;
+  line-height: 30px;
+  &-lg {
+    line-height: 32px;
+  }
+  &-sm {
+    line-height: 22px;
+  }
+}
 .@{btn-prefix-cls} {
   .btn;
   // .btn-default;

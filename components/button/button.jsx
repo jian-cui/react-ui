@@ -30,7 +30,7 @@ export default class Button extends React.Component {
   }
   render () {
     const {
-      type, shape, size, className, children, icon, prefixCls, loading, ghost, disabled
+      type, shape, size, className, children, icon, prefixCls, loading, ghost, disabled, href, style
      } = this.props;
 
     let sizeCls = '';
@@ -40,6 +40,7 @@ export default class Button extends React.Component {
         break;
       case 'small':
         sizeCls = 'sm';
+        break;
       default:
         break;
     }
@@ -55,21 +56,23 @@ export default class Button extends React.Component {
       [`${prefixCls}-clicked`]: clicked,
       [`${prefixCls}-background-ghost`]: ghost
     })
-
+    const ComponentName = href ? 'a' : 'button';
     const iconType = loading ? 'loading' : icon;
     const iconNode = iconType ? <Icon type={iconType} /> : null;
     const kids = React.Children.map(children, child => <span>{child}</span>);
     const dis = disabled ? 'disabled' : '';
     return (
-      <button
+      <ComponentName
         type='button'
         className={ classes }
         onClick={ this.handleClick.bind(this) }
         disabled= { disabled }
+        href= { href }
+        style= { style }
       >
         { iconNode }
         { kids }
-      </button>
+      </ComponentName>
     )
   }
 }
@@ -93,5 +96,6 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   className: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  href: PropTypes.string,
 }
