@@ -35,6 +35,7 @@ const webpackConfig = {
   resolve: {
     extensions: [".js", ".jsx"]
   },
+  externals: ['react', 'react-dom', 'prop-types', 'classnames'],
   // devtool: 'source-map',
   // devServer: {
   //   contentBase: './dist',
