@@ -1,4 +1,4 @@
-export { default as Affix } from './affix/';
+export { default as Affix } from './affix';
 
 export { default as Button } from './button';
 
