@@ -35,7 +35,18 @@ const webpackConfig = {
   resolve: {
     extensions: [".js", ".jsx"]
   },
-  externals: ['react', 'react-dom', 'prop-types', 'classnames'],
+  // externals: ['react', 'react-dom'],
+  externals: {
+    'react': {
+      root: 'React',
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'react'
+    },
+    'react-dom': {
+      root: 'react-dom'
+    }
+  }
   // devtool: 'source-map',
   // devServer: {
   //   contentBase: './dist',
@@ -43,6 +54,14 @@ const webpackConfig = {
   // },
   // watch: true,
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"'
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warning: false
+      }
+    })
     // new CleanWebpackPlugin(['dist']),
     // new HtmlWebpackPlugin({
     //   filename: 'index.html',
