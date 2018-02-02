@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 export default class Icon extends React.Component {
   constructor (props) {
     super(props);
-
   }
   render () {
     const { type, className = '', spin } = this.props;

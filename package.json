@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "node webpack.test.config.js",
-    "build": "set NODE_ENV=production && webpack --config webpack.production.config.js"
+    "build": "set NODE_ENV=production && webpack --config webpack.prod.config.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jian-cui/react-ui.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Jian Cui",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jian-cui/react-ui/issues"
   },
