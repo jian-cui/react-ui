@@ -1,0 +1,20 @@
+{
+    "extends": "airbnb",
+    "rules": {
+        "react/prefer-stateless-function": [0, { "ignorePureComponents": false }],
+        "react/prefer-es6-class": [true, "always"],
+        "react/no-multi-comp": [false, { "ignoreStateless": true }],
+        "react/require-default-props": [1, { "forbidDefaultForRequired": true }],
+        "react/prop-types": [1, { "ignore": ["style", "children"], "customValidators": [] }],
+        "arrow-body-style": ["error", "always"],
+        "comma-dangle": "warn",
+        "no-console": 0,
+        "prefer-destructuring": ["error", {
+            "array": true,
+            "object": false
+          }, {
+            "enforceForRenamedProperties": false
+          }],
+        "import/no-extraneous-dependencies": 0
+    }
+}
