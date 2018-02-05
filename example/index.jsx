@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDom from 'react-dom';
 // import Button from './components/button/index.jsx';
 // import Affix from './components/affix/index.jsx';
-import { Button, Affix } from './components/';
+import { Button, Affix } from '../components/index.js';
 // import { Button, Affix } from './dist/index.js';
-import './test.less';
-import './font/iconfont.less';
+import './style.less';
+import '../font/iconfont.less';
 
 const ButtonGroup = Button.Group;
 
