@@ -1,15 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const WebpackDevServer = require('webpack-dev-server');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const DashboardPlugin = require('webpack-dashboard/plugin');
 
-const port = 3001;
-
 const webpackConfig = {
   entry: {
-    app: "./components/index.js"
+    app: './components/index.js'
   },
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -28,33 +26,29 @@ const webpackConfig = {
       },
       exclude: /node_modules/
     }, {
-      test   : /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-      loader : 'file-loader'      
+      test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+      loader: 'file-loader'
     }]
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: ['.js', '.jsx']
   },
-  // externals: {
-  //   'react': {
-  //     root: 'React',
-  //     commonjs: 'react',
-  //     commonjs2: 'react',
-  //     amd: 'react'
-  //   },
-  //   'react-dom': {
-  //     root: 'ReactDOM',
-  //     commonjs2: 'react-dom',
-  //     commonjs: 'react-dom',
-  //     amd: 'react-dom',
-  //   }
-  // },
-  // devtool: 'source-map',
-  // devServer: {
-  //   contentBase: './dist',
-  //   hot: true
-  // },
-  // watch: true,
+  externals: {
+    react: {
+      root: 'React',
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'react'
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom',
+    },
+    classnames: 'classnames',
+    'prop-types': 'prop-types'
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
@@ -80,20 +74,6 @@ const webpackConfig = {
     // dashboard
     // new DashboardPlugin({ port: port })
   ]
-}
+};
 
 module.exports = webpackConfig;
-
-// const options = {
-//   contentBase: './dist',
-//   hot: true,
-//   host: 'localhost'
-// };
-
-// WebpackDevServer.addDevServerEntrypoints(webpackConfig, options); // hot reload setting
-// const compiler = webpack(webpackConfig);
-// const server = new WebpackDevServer(compiler, options);
-
-// server.listen(port, 'localhost', function () {
-//   console.log('listening localhost:' + port);
-// });
