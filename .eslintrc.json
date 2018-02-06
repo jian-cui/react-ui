@@ -7,6 +7,9 @@
         "react/no-multi-comp": [false, { "ignoreStateless": true }],
         "react/require-default-props": [1, { "forbidDefaultForRequired": true }],
         "react/prop-types": [1, { "ignore": ["style", "children"], "customValidators": [] }],
+        "import/no-extraneous-dependencies": 0,
+        "import/extensions": [".js", ".jsx"],
+        "jsx-a11y/click-events-have-key-events": 0,
         "arrow-body-style": ["error", "always"],
         "comma-dangle": "warn",
         "no-console": 0,
@@ -16,7 +19,9 @@
           }, {
             "enforceForRenamedProperties": false
           }],
-        "import/no-extraneous-dependencies": 0,
-        "import/extensions": [".js", ".jsx"]
+        "object-curly-newline": ["error", {
+            "consistent": true
+        }],
+        "no-underscore-dangle": 0
     }
 }
