@@ -1,8 +1,9 @@
 {
+    "parser": "babel-eslint",
     "extends": "airbnb",
     "rules": {
         "react/prefer-stateless-function": [0, { "ignorePureComponents": false }],
-        "react/prefer-es6-class": [true, "always"],
+        "react/prefer-es6-class": [1, "always"],
         "react/no-multi-comp": [false, { "ignoreStateless": true }],
         "react/require-default-props": [1, { "forbidDefaultForRequired": true }],
         "react/prop-types": [1, { "ignore": ["style", "children"], "customValidators": [] }],

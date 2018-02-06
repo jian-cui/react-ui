@@ -5,6 +5,36 @@ import Icon from '../icon';
 import './style/style.less';
 
 export default class Button extends React.Component {
+  static defaultProps = {
+    type: 'default',
+    shape: undefined,
+    icon: undefined,
+    buttonType: 'button',
+    prefixCls: 'react-btn',
+    loading: false,
+    ghost: false,
+    size: 'medium',
+    disabled: false,
+    className: '',
+    href: undefined,
+    children: undefined,
+  };
+
+  static propTypes = {
+    type: PropTypes.string,
+    shape: PropTypes.string,
+    icon: PropTypes.string,
+    buttonType: PropTypes.oneOf(['button']),
+    prefixCls: PropTypes.string,
+    loading: PropTypes.bool,
+    ghost: PropTypes.bool,
+    disabled: PropTypes.bool,
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
+    className: PropTypes.string,
+    onClick: PropTypes.func,
+    href: PropTypes.string,
+    children: PropTypes.node,
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -79,33 +109,33 @@ export default class Button extends React.Component {
   }
 }
 
-Button.defaultProps = {
-  type: 'default',
-  shape: undefined,
-  icon: undefined,
-  buttonType: 'button',
-  prefixCls: 'react-btn',
-  loading: false,
-  ghost: false,
-  size: 'medium',
-  disabled: false,
-  className: '',
-  href: undefined,
-  children: undefined,
-};
+// Button.defaultProps = {
+//   type: 'default',
+//   shape: undefined,
+//   icon: undefined,
+//   buttonType: 'button',
+//   prefixCls: 'react-btn',
+//   loading: false,
+//   ghost: false,
+//   size: 'medium',
+//   disabled: false,
+//   className: '',
+//   href: undefined,
+//   children: undefined,
+// };
 
-Button.propTypes = {
-  type: PropTypes.string,
-  shape: PropTypes.string,
-  icon: PropTypes.string,
-  buttonType: PropTypes.oneOf(['button']),
-  prefixCls: PropTypes.string,
-  loading: PropTypes.bool,
-  ghost: PropTypes.bool,
-  disabled: PropTypes.bool,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  className: PropTypes.string,
-  onClick: PropTypes.func,
-  href: PropTypes.string,
-  children: PropTypes.node,
-};
+// Button.propTypes = {
+//   type: PropTypes.string,
+//   shape: PropTypes.string,
+//   icon: PropTypes.string,
+//   buttonType: PropTypes.oneOf(['button']),
+//   prefixCls: PropTypes.string,
+//   loading: PropTypes.bool,
+//   ghost: PropTypes.bool,
+//   disabled: PropTypes.bool,
+//   size: PropTypes.oneOf(['small', 'medium', 'large']),
+//   className: PropTypes.string,
+//   onClick: PropTypes.func,
+//   href: PropTypes.string,
+//   children: PropTypes.node,
+// };

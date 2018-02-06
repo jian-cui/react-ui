@@ -4,6 +4,16 @@ import PropTypes from 'prop-types';
 import './style/style.less';
 
 export default class Icon extends React.Component {
+  static defaultProps = {
+    type: undefined,
+    className: '',
+  };
+
+  static propTypes = {
+    type: PropTypes.string,
+    className: PropTypes.string,
+  };
+
   render() {
     const { type, className } = this.props;
     let typeClass = type;
@@ -15,13 +25,3 @@ export default class Icon extends React.Component {
     return <i className={classes} />;
   }
 }
-
-Icon.defaultProps = {
-  type: undefined,
-  className: '',
-};
-
-Icon.propTypes = {
-  type: PropTypes.string,
-  className: PropTypes.string,
-};
