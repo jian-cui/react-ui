@@ -23,7 +23,8 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "prop-types": "^15.6.0"
+    "prop-types": "^15.6.0",
+    "react-style-proptype": "^3.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
