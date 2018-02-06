@@ -1,0 +1,63 @@
+@layout-prefix: react-layout;
+@header-prefix: react-layout-header;
+@content-prefix: react-layout-content;
+@footer-prefix: react-layout-footer;
+@sider-prefix: react-layout-sider;
+
+@vice-color: #7dbcea;
+// @main-color: rgba(16, 142, 233, 1);
+
+.@{layout-prefix} {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  &.@{layout-prefix}-has-sider {
+    flex-direction: row;
+  }
+}
+
+.@{sider-prefix} {
+  // position: relative;
+  // 收起按钮
+  transition: all .2s;
+  .@{sider-prefix}-trigger {
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    height: 48px;
+    line-height: 48px;
+    background-color: #002140;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    transition: all .2s;
+    outline: none;
+  }
+}
+
+.@{header-prefix} {
+  color: #FFF;
+  background: #001529;
+  padding: 0 50px;
+  height: 64px;
+  line-height: 64px;
+}
+
+.@{footer-prefix} {
+  // background-color: @vice-color;
+  padding: 24px 50px;
+  font-size: 14px;
+  background: #f0f2f5;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.@{header-prefix},
+.@{footer-prefix} {
+  flex: 0 0 auto;
+}
+
+.@{content-prefix} {
+  flex: 1 1 auto;
+  // background-color: @main-color;
+  // color: #FFF;
+}
