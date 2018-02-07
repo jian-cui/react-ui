@@ -21,7 +21,7 @@ function withPrefixCls(props, WrappedComponent) {
   class WithPrefixCls extends React.Component {
     render() {
       const { prefixCls } = props;
-      console.log('with:', props);
+
       return (
         // {...this.props} 此处将所有的prop传入了组件
         <WrappedComponent prefixCls={prefixCls} {...this.props} />
