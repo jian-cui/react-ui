@@ -16,7 +16,7 @@ const webpackConfig = {
   module: {
     rules: [{
       test: /\.less$/,
-      use: ['style-loader', 'css-loader', 'less-loader'],
+      use: ['style-loader', { loader: 'css-loader', options: { minimize: true } }, 'less-loader'],
       exclude: /node_modules/
     }, {
       test: /\.jsx$|\.js$/,
@@ -54,13 +54,16 @@ const webpackConfig = {
       'process.env.NODE_ENV': '"production"'
     }),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
+      // compress: {
+      //   warnings: false
+      // }
       // mangle: {
       //   keep_fnames: true
       // }
-    })
+    }),
+    // 减少打包内容
+    // https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size
+    new webpack.optimize.ModuleConcatenationPlugin(),
     // new CleanWebpackPlugin(['dist']),
     // new HtmlWebpackPlugin({
     //   filename: 'index.html',
@@ -70,9 +73,18 @@ const webpackConfig = {
     // hot reload
     // new webpack.NamedModulesPlugin(),
     // new webpack.HotModuleReplacementPlugin()
-
-    // dashboard
-    // new DashboardPlugin({ port: port })
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+      minChunks: 2
+    }),
+    // 再次调用CommonsChunkPlugin用来解决每次chunkhash改变问题
+    // https://developers.google.com/web/fundamentals/performance/webpack/use-long-term-caching
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'runtime',
+      minChunks: Infinity
+    }),
+    // 根据相对路径生成文件ID
+    new webpack.HashedModuleIdsPlugin(),
   ]
 };
 

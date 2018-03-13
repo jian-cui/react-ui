@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "node webpack.test.config.js",
-    "build": "set NODE_ENV=production && webpack --config webpack.prod.config.js"
+    "build": "set NODE_ENV=production && webpack --config webpack.prod.config.js",
+    "gulp": "gulp",
+    "test2": "set NODE_ENV=production && webpack --config webpack.prod2.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "omit.js": "^1.0.0",
     "prop-types": "^15.6.0",
     "react-style-proptype": "^3.1.0"
   },
@@ -42,6 +45,9 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",
     "file-loader": "^1.1.5",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-webpack": "^1.5.0",
     "html-webpack-plugin": "^2.30.1",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",

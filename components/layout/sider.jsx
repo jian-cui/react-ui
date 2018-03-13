@@ -89,8 +89,9 @@ class Sider extends React.Component {
   }
 
   toggle() {
-    const collapsed = !this.state.collapsed;
-    this.setState({ collapsed });
+    this.setState(prevState => ({
+      collapsed: !prevState.collapsed
+    }));
   }
 
   render() {
