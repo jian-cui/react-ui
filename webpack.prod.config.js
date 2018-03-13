@@ -7,11 +7,12 @@ const webpack = require('webpack');
 
 const webpackConfig = {
   entry: {
-    app: './components/index.js'
+    '/icon/index.js': './components/icon/index.jsx',
+    '/layout/index.js': './components/layout/index.jsx'
   },
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'index.js'
+    filename: '[name]'
   },
   module: {
     rules: [{
